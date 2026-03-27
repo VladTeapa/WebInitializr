@@ -1,0 +1,15 @@
+mysql-db:
+  image: mysql:8.0
+  container_name: mysql-webinitializr
+  restart: always
+  environment:
+    MYSQL_ROOT_PASSWORD: ${DATABASE_PASSWORD}
+    MYSQL_DATABASE: ${DATABASE_DB}
+    MYSQL_USER: ${DATABASE_USER}
+    MYSQL_PASSWORD: ${DATABASE_PASSWORD}
+  volumes:
+    - ${DATABASE_VOLUME}:/var/lib/mysql
+  networks:
+    - backend
+  ports: # Remove if you don't want to expose anything
+      - "127.0.0.1:3306:3306" # This won't allow public acces

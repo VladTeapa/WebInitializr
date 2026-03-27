@@ -1,0 +1,15 @@
+mariadb-db:
+  image: mariadb:11
+  container_name: mariadb-webinitializr
+  restart: always
+  environment:
+    MARIADB_ROOT_PASSWORD: ${DATABASE_PASSWORD}
+    MARIADB_DATABASE: ${DATABASE_DB}
+    MARIADB_USER: ${DATABASE_USER}
+    MARIADB_PASSWORD: ${DATABASE_PASSWORD}
+  volumes:
+    - ${DATABASE_VOLUME}:/var/lib/mysql
+  networks:
+    - backend
+  ports: # Remove if you don't want to expose anything
+      - "127.0.0.1:3306:3306" # This won't allow public acces

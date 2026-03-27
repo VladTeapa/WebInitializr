@@ -1,0 +1,6 @@
+networks:
+  backend:
+    driver: bridge
+    internal: true
+  web: # Delete if you don't want Nginx
+    driver: bridge
