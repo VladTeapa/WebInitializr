@@ -1,0 +1,11 @@
+mssql-db:
+  image: mcr.microsoft.com/mssql/server:2022-latest
+  container_name: mssql-webinitializr
+  restart: always
+  environment:
+    ACCEPT_EULA: "Y"
+    MSSQL_SA_PASSWORD: ${DATABASE_PASSWORD}
+  networks:
+    - backend
+  ports: # Remove if you don't want to expose anything
+    - "127.0.0.1:1433:1433" # This won't allow public acces

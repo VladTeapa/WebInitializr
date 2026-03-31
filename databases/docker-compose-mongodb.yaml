@@ -1,0 +1,13 @@
+mongodb-db:
+  image: mongo:7
+  container_name: mongo-webinitializr
+  restart: always
+  environment:
+    MONGO_INITDB_ROOT_USERNAME: ${DATABASE_USER}
+    MONGO_INITDB_ROOT_PASSWORD: ${DATABASE_PASSWORD}
+  volumes:
+    - ${DATABASE_VOLUME}:/data/db
+  networks:
+    - backend
+  ports: # Remove if you don't want to expose anything
+      - "127.0.0.1:3306:3306" # This won't allow public acces
